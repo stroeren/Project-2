@@ -52,9 +52,12 @@ public class packetSelector {
             } else {
                 packets.Push(2, element);  
         }
-        flg = (flg == 1) ? 0 : 1;
-        System.out.println("Flag value is now: " + flg);
     }
+		if (flg == 1) {
+			flg = 0;
+		} else {
+			flg = 1;
+		}
 	} 
 }       
 
