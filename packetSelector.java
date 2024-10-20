@@ -2,8 +2,10 @@ import textbook.StackWork;
 
 public class packetSelector {
 	
-	// Define packets, and initialize it to null.
+	// Define packets, and initialize it to null
+	static StackWork packets = null;
 	
+
 	public static void main(String[] args) {
 		
 		System.out.println("Packet selector is now running...\n");
@@ -33,11 +35,26 @@ public class packetSelector {
 	// Precondition: The StackWork object packets is different than null.
 	// Postcondition: The elements of the stack S0 that are equal to, or less than 100, are inserted in the stack S1.
 	// The elements of the stack S0 that are greater than 100 are inserted in the stack S2.
-        // The argument flg is flipped. In other words, if the caller passes 1, flg is set to 0. Similarly, if the caller passes 0, flg is set to 1. No further action is taken on flg. 
+    	// The argument flg is flipped. In other words, if the caller passes 1, flg is set to 0. Similarly, if the caller passes 0, flg is set to 1. No further action is taken on flg. 
 	public static void reorganizeNetworkTraffic(int flg)   
 	{
-	   // Implement me. 
+		if (packets == null) {
+            System.out.println("Error: The StackWork object 'packets' is null.");
+            return;
+        }
+
+        
+        while (packets.getS0top() >= 0) {
+            int element = packets.Pop(0);  
+
+            if (element <= 100) {
+                packets.Push(1, element);  
+            } else {
+                packets.Push(2, element);  
+        }
+        flg = (flg == 1) ? 0 : 1;
+        System.out.println("Flag value is now: " + flg);
+    }
 	} 
-	
 }       
 
